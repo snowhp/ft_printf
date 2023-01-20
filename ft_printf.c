@@ -6,7 +6,7 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:32:56 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/20 13:24:40 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:02:12 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	ft_check(const char *str, va_list ap)
 	count = 0;
 	if (*str == 'c')
 		count += ft_int_putchar(va_arg(ap, int));
-	if (*str == 's')
+	else if (*str == 's')
 		count += ft_int_putstr(va_arg(ap, char *));
-	if (*str == 'p')
+	else if (*str == 'p')
 		count += ft_int_putpointer(va_arg(ap, unsigned long));
-	if (*str == 'd' || *str == 'i')
+	else if (*str == 'd' || *str == 'i')
 		count += ft_int_putnbr(va_arg(ap, int));
-	if (*str == 'u')
+	else if (*str == 'u')
 		count += ft_int_putnbr(va_arg(ap, unsigned int));
-	if (*str == 'x' || *str == 'X')
+	else if (*str == 'x' || *str == 'X')
 		count += ft_int_puthex(va_arg(ap, unsigned int), *str);
-	if (*str == '%')
+	else if (*str == '%')
 		count += ft_int_putchar('%');
 	return (count);
 }
@@ -57,20 +57,25 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	main()
 {
-	(void) argc;
-	(void) argv;
-	unsigned int p = 581283;
-	
+	char c = 'k'; // %c
+	char *str = "String test"; // %s
+	char *var; var = &c;// %p
+	int	nbr = -5;// %d // %i
+	unsigned int nbrr = 20;// %u
+	int b= 0xffffffff;// %x // %X
+	// %%
+
 	int i;
 	printf("Printf replica:\n");
-	i = ft_printf(" %p %p ", 0, 0);
+	i = ft_printf("| TEST TEXT |\n| Single Char: %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
 	printf("\nReturn Value: %d", i);
+	///////////////////////////////
 	printf("\nPrintf original:\n");
-	i = printf(" %p %p ", 0, 0);
+	i = printf("| TEST TEXT |\n| Single Char: %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
 	printf("\nReturn Value: %d", i);
 	return (0);
-} */
+}
