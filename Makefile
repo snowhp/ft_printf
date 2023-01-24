@@ -6,7 +6,7 @@
 #    By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 11:27:43 by tde-sous          #+#    #+#              #
-#    Updated: 2023/01/24 10:08:45 by tde-sous         ###   ########.fr        #
+#    Updated: 2023/01/24 11:48:58 by tde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,19 @@ SRCS = ft_printf.c \
 OBJS = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
-FLAGS = -Wall -Wextra -Werror
+LIBFT_DIR := libft
+LIBFT_LIB := $(LIBFT_DIR)/libft.a
 CC = cc
+FLAGS = -Wall -Wextra -Werror
 LIBC = ar rc
 RM = rm -f
 OUTPUTFILE = a.out
 
 all: $(NAME)
 
-$(NAME): $(OBJS)	
-	@make bonus -C libft
-	cp libft/libft.a $(NAME)														
-	$(LIBC) $(NAME) $(OBJS) 
+$(NAME): $(OBJS) $(LIBFT_LIB)
+	cp $(LIBFT_LIB) $(NAME)													
+	$(LIBC) $(NAME) $(OBJS)
 
 clean:
 	@make clean -C libft
@@ -37,3 +38,9 @@ fclean: clean
 	$(RM) $(NAME) $(OUTPUTFILE)
 
 re: fclean all
+
+$(LIBFT_LIB): makelibft ;
+
+.PHONY: makelibft
+makelibft:
+	$(MAKE) -C $(LIBFT_DIR)

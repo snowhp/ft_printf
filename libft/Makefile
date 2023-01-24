@@ -34,12 +34,6 @@ SRCS = ft_strchr.c \
                           ft_putstr_fd.c \
                           ft_putendl_fd.c \
                           ft_putnbr_fd.c \
-                          ft_int_putstr.c \
-	                    ft_int_puthex.c \
-	                    ft_int_putnbr.c \
-	                    ft_int_putchar.c \
-	                    ft_int_puthex.c \
-	                    ft_int_putpointer.c \
 
 BNS_SRCS = ft_lstnew.c \
             ft_lstadd_front.c \
@@ -55,6 +49,7 @@ OBJS = $(SRCS:.c=.o)
 BNS_OBJS = $(BNS_SRCS:%.c=%.o)
 
 NAME = libft.a
+NAMEBONUS = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = cc
 LIBC = ar rc
@@ -65,8 +60,10 @@ all: $(NAME)
 $(NAME): $(OBJS)																	
 	$(LIBC) $(NAME) $(OBJS)
 
-bonus: $(BNS_OBJS) $(OBJS)
+$(NAMEBONUS) : $(BNS_OBJS) $(OBJS)
 	$(LIBC) $(NAME) $(BNS_OBJS) $(OBJS)
+
+bonus: $(NAMEBONUS)
 
 clean:
 	$(RM) $(OBJS) $(BNS_OBJS)
