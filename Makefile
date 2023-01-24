@@ -6,7 +6,7 @@
 #    By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/18 11:27:43 by tde-sous          #+#    #+#              #
-#    Updated: 2023/01/20 18:10:46 by tde-sous         ###   ########.fr        #
+#    Updated: 2023/01/24 10:08:45 by tde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ FLAGS = -Wall -Wextra -Werror
 CC = cc
 LIBC = ar rc
 RM = rm -f
+OUTPUTFILE = a.out
 
 all: $(NAME)
 
 $(NAME): $(OBJS)	
 	@make bonus -C libft
-	$(CC) $(FLAGS) -o a.out $(NAME) $(SRCS)														
+	cp libft/libft.a $(NAME)														
 	$(LIBC) $(NAME) $(OBJS) 
 
 clean:
