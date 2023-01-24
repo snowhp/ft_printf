@@ -6,11 +6,12 @@
 /*   By: tde-sous <tde-sous@42.porto.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:07:42 by tde-sous          #+#    #+#             */
-/*   Updated: 2023/01/24 10:07:43 by tde-sous         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:13:35 by tde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
+#include <stdio.h>
+#include "ft_printf.h"
 
 int	main()
 {
@@ -31,4 +32,4 @@ int	main()
 	i = printf("| TEST TEXT |\n| Single Char: %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
 	printf("\nReturn Value: %d", i);
 	return (0);
-} */
+}
