@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_check(const char *str, va_list ap)
